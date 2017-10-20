@@ -8,8 +8,8 @@ const Header = (props) => {
   const { textStyle, viewStyle } = styles;
 
   return (
-    <View style={viewStyle}>
-      <Text style={textStyle}>{props.headerText}</Text>
+    <View style={[viewStyle, props.viewStyle]}>
+      <Text style={[textStyle, props.textStyle]}>{props.headerText}</Text>
     </View>
   );
 };

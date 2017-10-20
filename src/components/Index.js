@@ -8,7 +8,6 @@ class Index extends Component {
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
         this.setState({ loggedIn: true });
       } else {

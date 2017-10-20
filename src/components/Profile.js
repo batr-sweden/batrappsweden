@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { Alert, Image, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 import { Card, ListItem } from 'react-native-elements';
-
+import { signOutUser } from '../actions';
 import { Button, CardSection, Header } from './common';
 
 const pageColor = '#448aff';
 
 class Profile extends Component {
+  signOut() {
+    this.props.signOutUser();
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -23,8 +28,8 @@ class Profile extends Component {
             />
             <Text style={styles.profileTextStyle}>First and Last Name</Text>
             <Button
-              buttonPressed={() => { Alert.alert('pressed'); }}
-              buttonText={'Sign Out'}
+              onPress={this.signOut.bind(this)}
+              text={'Sign Out'}
               componentTextStyle={styles.textStyle}
               componentButtonStyle={styles.buttonStyle}
             />
@@ -128,4 +133,4 @@ const styles = {
   },
 };
 
-export default Profile;
+export default connect(null, { signOutUser })(Profile);

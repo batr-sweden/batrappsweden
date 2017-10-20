@@ -1,15 +1,14 @@
 import React from 'react';
-// import { Platform, StatusBar } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-// import { FontAwesome } from 'react-native-vector-icons';
+import { Icon } from 'react-native-elements';
 
 import LoginForm from './components/LoginForm';
 import RewardsPage from './components/RewardsPage';
-// import Profile from './components/Profile';
-
-// const headerStyle = {
-//   marginTop: Platform.OS === 'andriod' ? StatusBar.currentHeight : 0
-// };
+import KontaktInfo from './components/KontaktInfo';
+import Profile from './components/Profile';
+import Search from './components/Search';
+import SignUp from './components/SignUp';
+// import PhoneAuth from './components/PhoneAuth';
 
 export const NotAuthenticated = StackNavigator({
   LoginForm: {
@@ -19,13 +18,36 @@ export const NotAuthenticated = StackNavigator({
       header: null
     }
   },
-  // SignUp: {
-  //   screen: SignUp,
+  SignUp: {
+    screen: SignUp,
+    navigationOptions: {
+      title: 'Sign Up',
+      header: null
+    }
+  },
+  // PhoneAuth: {
+  //   screen: PhoneAuth,
   //   navigationOptions: {
-  //     title: "Sign Up",
-  //     headerStyle
+  //     title: 'Phone Auth',
+  //     header: null
   //   }
   // }
+});
+
+export const ProfileStack = StackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      title: 'Profile',
+      header: null
+    },
+  },
+  KontaktInfo: {
+    screen: KontaktInfo,
+    navigationOptions: {
+      title: 'KontaktInfo',
+    },
+  }
 });
 
 export const Authenticated = TabNavigator({
@@ -33,16 +55,29 @@ export const Authenticated = TabNavigator({
     screen: RewardsPage,
     navigationOptions: {
       tabBarLabel: 'Main',
-      // tabBarIcon: ({ tintColor }) =>
-      //   < FontAwesome name="home" size={30} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
     }
    },
-  // Profile: {
-  //   screen: Profile,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Profile',
-  //     // tabBarIcon: ({ tintColor }) =>
-  //     //   < FontAwesome name="user" size={30} color={tintColor} />
-  //   }
-  // }
+   Search: {
+     screen: Search,
+     navigationOptions: {
+       tabBarLabel: 'Search',
+       tabBarIcon: ({ tintColor }) => (
+         <Icon name="search" size={35} color={tintColor} />
+       )
+     },
+   },
+   Profile: {
+     screen: ProfileStack,
+     navigationOptions: {
+       tabBarLabel: 'Profile',
+       tabBarIcon: ({ tintColor }) => (
+         <Icon name="account-circle" size={35} color={tintColor} />
+       )
+     },
+   },
+}, {
+  tabBarOptions: {
+    activeTintColor: '#ab47bc',
+  },
 });

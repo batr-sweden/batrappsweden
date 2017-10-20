@@ -1,8 +1,8 @@
 import React from 'react';
-import { ImageBackground, Modal, TouchableHighlight, Text, View } from 'react-native';
+import { ImageBackground, Modal, StatusBar, Text, View } from 'react-native';
+import { Avatar } from 'react-native-elements';
 import Badge from 'react-native-smart-badge';
 import QRCode from 'react-native-qrcode';
-import { Button } from './common';
 
 const SingleListInfo = ({ reward, visible, onPress }) => {
     const { image, points, storeName, thumbnail_image, title, uid } = reward;
@@ -17,7 +17,8 @@ const SingleListInfo = ({ reward, visible, onPress }) => {
         transparent={false}
         visible={visible}
       >
-        <View style={{ flex: 1, backgroundColor: '#fff', marginTop: 22 }}>
+      <StatusBar hidden />
+        <View style={{ flex: 1, backgroundColor: '#fff' }}>
           <View style={{ height: '50%' }}>
             <ImageBackground
               style={backgroundImage}
@@ -26,12 +27,19 @@ const SingleListInfo = ({ reward, visible, onPress }) => {
             >
               <View style={imgHeaderContainer}>
                 <Text style={imgHeaderText}>{storeName}</Text>
+                <View style={{ alignSelf: 'flex-end' }}>
+                  <Avatar
+                    small
+                    rounded
+                    icon={{ name: 'close', color: 'black' }}
+                    overlayContainerStyle={{ backgroundColor: 'white', margin: 0, padding: 0}}
+                    onPress={onPress}
+                    activeOpacity={0.3}
+                  />
+                </View>
               </View>
+
               <View style={imgFooterContainer}>
-              <Button
-                onPress={onPress}
-                text={'close'}
-              />
                 <Badge
                   minWidth={18} minHeight={18}
                   textStyle={{ color: '#bf360c', fontSize: 16 }}
@@ -63,14 +71,17 @@ const styles = {
     height: '100%'
   },
   imgHeaderContainer: {
-    padding: 20
+    flex: 1,
+    flexDirection: 'column',
+    padding: 20,
   },
   imgHeaderText: {
     backgroundColor: 'transparent',
     color: '#fff',
     fontWeight: '800',
     fontSize: 20,
-    shadowColor: '#000'
+    shadowColor: '#000',
+    alignSelf: 'flex-start'
   },
   imgFooterContainer: {
     flex: 1,

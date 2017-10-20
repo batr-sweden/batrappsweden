@@ -1,7 +1,6 @@
 package com.batrapp;
 
 import com.facebook.react.ReactActivity;
-import com.reactlibrary.RNFirebasePhoneAuthPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 
 public class MainActivity extends ReactActivity {

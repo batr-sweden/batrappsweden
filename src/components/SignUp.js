@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Image, ImageBackground, KeyboardAvoidingView, StatusBar, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser, pageNav } from '../actions';
+import { emailChanged, passwordChanged, rePasswordChanged, passwordCheck, pageNav } from '../actions';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import { authStyles } from './styles';
 
-class LoginForm extends Component {
+class SignUp extends Component {
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
@@ -14,15 +14,19 @@ class LoginForm extends Component {
     this.props.passwordChanged(text);
   }
 
-  onButtonPress() {
-    const { email, password } = this.props;
+  onRePasswordChange(text) {
+    this.props.rePasswordChanged(text);
+  }
 
-    this.props.loginUser({ email, password });
+  onButtonPress() {
+    const { email, password, rePassword } = this.props;
+
+    this.props.passwordCheck({ email, password, rePassword });
   }
 
   navigateToPage() {
     this.props.pageNav();
-    this.props.navigation.navigate('SignUp');
+    this.props.navigation.goBack();
   }
 
   renderButton() {
@@ -33,7 +37,7 @@ class LoginForm extends Component {
     return (
       <Button
         onPress={this.onButtonPress.bind(this)}
-        text="Login"
+        text="SignUp"
         componentTextStyle={{ color: '#fff' }}
         componentButtonStyle={{
           borderColor: '#fff',
@@ -82,9 +86,21 @@ class LoginForm extends Component {
             <Input
               secureTextEntry
               label="Password"
-              placeholder="Password"
+              placeholder="IamMoreThan6Ltrs"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
+              inputStyle={inputStyle}
+              labelStyle={labelStyle}
+            />
+          </CardSection>
+
+          <CardSection style={sectionStyle}>
+            <Input
+              secureTextEntry
+              label="Re-Password"
+              placeholder="Re type password"
+              onChangeText={this.onRePasswordChange.bind(this)}
+              value={this.props.rePassword}
               inputStyle={inputStyle}
               labelStyle={labelStyle}
             />
@@ -97,16 +113,26 @@ class LoginForm extends Component {
           <CardSection style={sectionStyle}>
             {this.renderButton()}
           </CardSection>
+
           <CardSection style={sectionStyle}>
             <Button
               onPress={this.navigateToPage.bind(this)}
-              text="SignUp"
+              text="Login"
               componentTextStyle={{ color: '#fff' }}
               componentButtonStyle={{
                 borderColor: 'transparent',
                 backgroundColor: 'transparent'
               }}
             />
+            {/*<Button
+              onPress={() => this.props.navigation.navigate('PhoneAuth')}
+              text="PhoneAuth"
+              componentTextStyle={{ color: '#fff' }}
+              componentButtonStyle={{
+                borderColor: 'transparent',
+                backgroundColor: 'transparent'
+              }}
+            />*/}
           </CardSection>
         </Card>
       </ImageBackground>
@@ -115,18 +141,17 @@ class LoginForm extends Component {
   }
 }
 
-
 //destructuring done.. check bellow for un destructured
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading } = auth;
+  const { email, password, rePassword, error, loading } = auth;
   //Pass state to Component
-  return { email, password, error, loading };
+  return { email, password, rePassword, error, loading };
 };
 
 
 export default connect(mapStateToProps, {
-  emailChanged, passwordChanged, loginUser, pageNav
-})(LoginForm);
+  emailChanged, passwordChanged, rePasswordChanged, passwordCheck, pageNav
+})(SignUp);
 
 
 // UNDESTRUCTURED

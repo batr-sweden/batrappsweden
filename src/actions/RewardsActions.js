@@ -9,7 +9,10 @@ export const rewardsFetch = () => {
   return (dispatch) => {
     firebase.database().ref(`/Rewards/${currentUser.uid}/rewards`)
       .on('value', snapshot => {
-        dispatch({ type: REWARDS_FETCH_SUCCESS, payload: snapshot.val() });
+        dispatch({
+          type: REWARDS_FETCH_SUCCESS,
+          payload: snapshot.val()
+        });
       });
   };
 };

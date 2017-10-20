@@ -6,7 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View } from 'react-native';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import Badge from 'react-native-smart-badge';
 import { CardSection } from './common';
 import SingleListInfo from './SingleListInfo';
