@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 import { fetchTrendingStores, searching } from '../actions';
 import TrendingList from './TrendingList';
-import { HorizontalLine } from './common';
+import { Header, HorizontalLine } from './common';
 
 class Search extends Component {
   componentWillMount() {
@@ -105,19 +105,16 @@ class Search extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, marginTop: 20 }}>
-        <View style={{ backgroundColor: '#FFF' }}>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 18,
-              paddingLeft: 10
-            }}
-          >
-            Search
-          </Text>
+      <View style={{ flex: 1 }}>
+      <Header
+        headerText={'Search'}
+        viewStyle={{ alignItems: 'flex-start' }}
+        textStyle={{ color: '#fff', paddingLeft: 5, fontWeight: 'bold' }}
+      />
+        <View>
           <SearchBar
-            lightTheme
+            containerStyle={{ backgroundColor: '#ab47bc', borderTopWidth: 0, borderBottomWidth: 0 }}
+            inputStyle={{ backgroundColor: '#fff', color: 'grey' }}
             onChangeText={this.searching.bind(this)}
             placeholder='Type Here...'
             value={this.props.searchingValue}

@@ -49,7 +49,7 @@ class LoginForm extends Component {
     } = authStyles;
 
     return (
-      <KeyboardAvoidingView behavior="padding" style={{ flex: 1}}>
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
       <ImageBackground
         source={require('../assets/Artboard.png')}
         style={containerStyle}

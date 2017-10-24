@@ -18,7 +18,7 @@ const SingleListInfo = ({ reward, visible, onPress }) => {
         visible={visible}
       >
       <StatusBar hidden />
-        <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'space-between' }}>
           <View style={{ height: '50%' }}>
             <ImageBackground
               style={backgroundImage}
@@ -54,7 +54,7 @@ const SingleListInfo = ({ reward, visible, onPress }) => {
           <View style={qrContainer}>
             <QRCode
               value={uid}
-              size={200}
+              size={100}
               bgColor='#000'
               fgColor='#fff'
             />
@@ -96,11 +96,21 @@ const styles = {
     marginBottom: 10
   },
   qrContainer: {
-    flex: 1,
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // paddingTop: 10,
+    // height: '50%'
+    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 10,
-    height: '50%'
+    height: 200,
+    width: 200,
+    borderRadius: 100,
+    borderWidth: 0,
+    backgroundColor: '#ffb74d',
+    marginBottom: 20
   }
 };
 

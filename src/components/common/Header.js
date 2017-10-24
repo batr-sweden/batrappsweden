@@ -2,6 +2,7 @@
 // Import libraries for making a component
 import React from 'react';
 import { Text, View } from 'react-native';
+import { primaryColor } from '../styles';
 
 // Make a component
 const Header = (props) => {
@@ -16,7 +17,7 @@ const Header = (props) => {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: primaryColor,
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,

@@ -1,13 +1,15 @@
 import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import { primaryColor } from './components/styles';
 
 import LoginForm from './components/LoginForm';
 import RewardsPage from './components/RewardsPage';
 import KontaktInfo from './components/KontaktInfo';
-import Profile from './components/Profile';
+import More from './components/More';
 import Search from './components/Search';
 import SignUp from './components/SignUp';
+import QRPage from './components/QRPage';
 // import PhoneAuth from './components/PhoneAuth';
 
 export const NotAuthenticated = StackNavigator({
@@ -34,11 +36,11 @@ export const NotAuthenticated = StackNavigator({
   // }
 });
 
-export const ProfileStack = StackNavigator({
-  Profile: {
-    screen: Profile,
+export const MoreStack = StackNavigator({
+  More: {
+    screen: More,
     navigationOptions: {
-      title: 'Profile',
+      title: 'More',
       header: null
     },
   },
@@ -55,7 +57,9 @@ export const Authenticated = TabNavigator({
     screen: RewardsPage,
     navigationOptions: {
       tabBarLabel: 'Main',
-      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="loyalty" size={35} color={tintColor} />
+      )
     }
    },
    Search: {
@@ -67,17 +71,26 @@ export const Authenticated = TabNavigator({
        )
      },
    },
-   Profile: {
-     screen: ProfileStack,
+   QRPage: {
+     screen: QRPage,
      navigationOptions: {
-       tabBarLabel: 'Profile',
+       tabBarLabel: 'QR',
        tabBarIcon: ({ tintColor }) => (
-         <Icon name="account-circle" size={35} color={tintColor} />
+         <Icon name="account-box" size={35} color={tintColor} />
+       )
+     },
+   },
+   More: {
+     screen: MoreStack,
+     navigationOptions: {
+       tabBarLabel: 'More',
+       tabBarIcon: ({ tintColor }) => (
+         <Icon name="more-horiz" size={35} color={tintColor} />
        )
      },
    },
 }, {
   tabBarOptions: {
-    activeTintColor: '#ab47bc',
+    activeTintColor: primaryColor,
   },
 });
