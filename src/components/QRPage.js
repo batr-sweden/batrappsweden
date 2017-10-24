@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { ImageBackground, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import QRCode from 'react-native-qrcode';
+import { primaryColor, secondaryColor } from './styles';
+
 
 class QRPage extends Component {
   render() {
@@ -39,8 +41,8 @@ class QRPage extends Component {
         <QRCode
           value={this.props.phoneNum}
           size={150}
-          bgColor='#000'
-          fgColor='#fff'
+          bgColor={primaryColor}
+          fgColor={secondaryColor}
         />
       </View>
       </ImageBackground>

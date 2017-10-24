@@ -4,6 +4,7 @@ import { ScrollView, ListView, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 import { fetchTrendingStores, searching } from '../actions';
+import { primaryColor } from './styles';
 import TrendingList from './TrendingList';
 import { Header, HorizontalLine } from './common';
 
@@ -113,7 +114,11 @@ class Search extends Component {
       />
         <View>
           <SearchBar
-            containerStyle={{ backgroundColor: '#ab47bc', borderTopWidth: 0, borderBottomWidth: 0 }}
+            containerStyle={{
+              backgroundColor: primaryColor,
+              borderTopWidth: 0,
+              borderBottomWidth: 0
+            }}
             inputStyle={{ backgroundColor: '#fff', color: 'grey' }}
             onChangeText={this.searching.bind(this)}
             placeholder='Type Here...'

@@ -5,7 +5,6 @@ import { ListView, StatusBar, View } from 'react-native';
 import { rewardsFetch, phoneFetch } from '../actions';
 import RewardsListItem from './RewardsListItem';
 import { Header } from './common';
-import { primaryColor } from './styles';
 import PhoneModal from './PhoneModal';
 
 class RewardsPage extends Component {
