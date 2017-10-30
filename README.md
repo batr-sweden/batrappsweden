@@ -50,8 +50,9 @@ react-native run-ios
 
 ## Authors
 
-* **Samuel Rudholm** - *Developer* - [batr-sweden](https://github.com/batr-sweden)
-* **Makanjuola Markay Jamiu** - *Developer* - [batr-sweden](https://github.com/batr-sweden)
+* **Samuel Rudholm** - *Developer* - [batr-sweden](https://github.com/batr-sweden) [LinkedIn](linkedin.com/in/samuel-rudholm-1a6480132)
+* **Makanjuola Markay Jamiu** - *Developer* - [batr-sweden](https://github.com/batr-sweden) [LinkedIn](http://linkedin.com/in/jamiumakanjuola)
+* **We are currently studying JavaScript development at Jensen Education.**
 
 ## License
 
